@@ -1329,10 +1329,26 @@ c	enddo
 
 	real*8 zero
 	parameter (zero=0.0e0)	!double precision zero for subroutine calls
+        real*8 gauss1,sigPe,sigPp,sigTe,sigTp,sigHe,sigHp
 
 ! Prepare the event for the Monte Carlo's and/or spectrometer cuts
 
 	success = .false.
+	if (doing_hyd_elast) then
+         sigPe = 10.0 ! 10 MeV
+         sigPp = 10.0 ! 10 MeV
+         sigTe = 0.003 ! 3 mrad
+         sigTp = 0.003 ! 3 mrad
+         sigHe = 0.003 ! 3 mrad
+         sigHp = 0.003 ! 3 mrad
+        else
+         sigPe = 0.0
+         sigPp = 0.0
+         sigTe = 0.0
+         sigTp = 0.0
+         sigHe = 0.0
+         sigHp = 0.0
+        endif
 	ntup%resfac = 0.0			!resfac (see simulate.inc)
 	if (correct_raster) then
 	  fry = -main%target%rastery
@@ -1556,7 +1572,10 @@ C DJG For spectrometers to the left of the beamline, need to pass ctheta,-stheta
 C DJG Should not correct delta for Eloss - delta is a SPECTROMETER variable
 C	  recon%p%delta = (recon%p%P-spec%p%P)/spec%p%P*100.
 	endif
-
+        recon%p%P = recon%p%P + gauss1(1.0)*sigPp
+        recon%p%E = sqrt(recon%p%P**2+Mh2)
+        recon%p%theta = recon%p%theta + gauss1(1.0)*sigTp
+        recon%p%phi = recon%p%phi + gauss1(1.0)*sigHp
 !___ E arm ______________
 
 ! Go from TRUE to SPECTROMETER quantities by computing target distortions
@@ -1752,6 +1771,10 @@ c	recon%e%E = recon%e%E + targ%Coulomb%ave
 c Generally, we do not correct for coulomb effects in the reconstruction
 	recon%e%E = recon%e%E 
 	recon%e%P = recon%e%E
+        recon%e%P = recon%e%P + gauss1(1.0)*sigPe
+        recon%e%E = recon%e%P        
+        recon%e%theta = recon%e%theta + gauss1(1.0)*sigTe
+        recon%e%phi = recon%e%phi + gauss1(1.0)*sigHe
 C DJG Should not correct delta for energy loss - delta is a SPECTROMETER
 C variable!!
 c	recon.e.delta = (recon.e.P-spec.e.P)/spec.e.P*100.
