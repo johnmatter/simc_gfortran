@@ -33,7 +33,7 @@
 	s_target = (targ%length/2. + zpos) / abs(cos(targ%angle))
 	if (liquid) then			!liquid target
 	  if (targ%can .eq. 1) then		!beer can (2.8 mil endcap)
-	    s_Al = s_Al + 0.0028*inch_cm
+	    s_Al = s_Al + 0.0050*inch_cm
 	  else if (targ%can .eq. 2) then	!pudding can (5 mil Al, for now)
 	    s_Al = s_Al + 0.0050*inch_cm
 	  endif
@@ -91,10 +91,10 @@
 	  s_mylar = 0.010*inch_cm
 	  forward_path = (targ%length/2.-zpos) / abs(cos(theta-targ%angle))
 	else if (electron_arm.eq.5 .or. electron_arm.eq.6) then	!SHMS
-	  s_Al = 0.008*inch_cm
-	  s_air = 15
- 	  s_kevlar = 0.005*inch_cm
-	  s_mylar = 0.003*inch_cm
+	  s_Al = 0.03*inch_cm
+	  s_air = 57.27
+ 	  s_kevlar = 0.0*inch_cm
+	  s_mylar = 0.0*inch_cm
 	  forward_path = (targ%length/2.-zpos) / abs(cos(theta-targ%angle))
 	endif
 	s_target = forward_path
@@ -185,10 +185,10 @@ c	       stop
 	  s_mylar = 0.010*inch_cm
 	  forward_path = (targ%length/2.-zpos) / abs(cos(theta-targ%angle))
 	else if (hadron_arm.eq.5 .or. hadron_arm.eq.6) then	!SHMS
-	  s_Al = 0.008*inch_cm
-	  s_air = 15
- 	  s_kevlar = 0.005*inch_cm
-	  s_mylar = 0.003*inch_cm
+	  s_Al = 0.03*inch_cm
+	  s_air = 57.27
+	  s_kevlar = 0.0*inch_cm
+	  s_mylar = 0.0*inch_cm
 	  forward_path = (targ%length/2.-zpos) / abs(cos(theta-targ%angle))
 	endif
 

@@ -60,16 +60,18 @@ C Spectrometer definitions - for double arm monte carlo compatability
 !	parameter (v_exit = 99.)
 
 ! Old collimator for HMS-1 tune (called 'large' or 'pion' at the time).
-!	parameter (h_entr = 3.536)
-!	parameter (v_entr = 9.003)
-!	parameter (h_exit = 3.708)
-!	parameter (v_exit = 9.444)
+! Today we call this "small" or "pion" - JM June 2019
+	parameter (h_entr = 3.536)
+	parameter (v_entr = 9.003)
+	parameter (h_exit = 3.708)
+	parameter (v_exit = 9.444)
 
 ! New collimator for HMS-100 tune.
-	parameter (h_entr = 4.575)
-	parameter (v_entr = 11.646)
-	parameter (h_exit = 4.759)
-	parameter (v_exit = 12.114)
+! Today we call this "large" - JM June 2019
+	! parameter (h_entr = 4.575)
+	! parameter (v_entr = 11.646)
+	! parameter (h_exit = 4.759)
+	! parameter (v_exit = 12.114)
 
 c	parameter (x_off=+0.496)	!+ve is slit DOWN - HMS1 tune
 c	parameter (x_off=+0.126)	!HMS-100 (preliminary survey)

@@ -123,9 +123,9 @@ C in MEs (if they exist)
 
 	if (length(spectr,class).gt.0.01 .and.
      >		abs(length(spectr,class)-zd).gt.0.01 ) then
-	    write(6,*) 'PROBLEM WITH TRANSFORMATION #',class,' for spectrometer #',spectr
-	    write(6,*) 'Central path length passed to transp =',zd
-	    write(6,*) 'But the comments say that the length =',length(spectr,class)
+	    ! write(6,*) 'PROBLEM WITH TRANSFORMATION #',class,' for spectrometer #',spectr
+	    ! write(6,*) 'Central path length passed to transp =',zd
+	    ! write(6,*) 'But the comments say that the length =',length(spectr,class)
 	endif
 
 C Check for decay.
@@ -272,7 +272,8 @@ C    SOS: if spectr = 2
 	else if (spectr.eq.4) then
 	  file_name='hrsl/hrs_forward_cosy.dat'
 	else if (spectr.eq.5) then
-	  file_name='shms/shms-2017-26cm-monte_quads_p18_forward.dat'
+c	  file_name='shms/shms-2011-26cm-monte_ideal_6ord_forward.dat'
+          file_name='shms/shms-2017-26cm-monte_quads_p18_forward.dat'
 	else if (spectr.eq.6) then
 c	  file_name='shms/shms_forward_cosy_LSA.dat'
 	  write(6,*) 'LSA tune for SHMS no longer used!'
@@ -414,9 +415,9 @@ cdg	endif
 
 	  if (adrift(spectr,kk) .and.
      >		abs(driftdist(spectr,kk)-length(spectr,kk)).gt.0.01) then
-	    write(6,*) 'PROBLEM WITH TRANSFORMATION #',kk,' for spectrometer #',spectr
-	    write(6,*) 'Appears to be a pure drift, driftdist=',driftdist(spectr,kk)
-	    write(6,*) 'But the comments say that the length =',length(spectr,kk)
+	    ! write(6,*) 'PROBLEM WITH TRANSFORMATION #',kk,' for spectrometer #',spectr
+	    ! write(6,*) 'Appears to be a pure drift, driftdist=',driftdist(spectr,kk)
+	    ! write(6,*) 'But the comments say that the length =',length(spectr,kk)
 	  endif
 
 !!	  write(6,*) 'Spec=',spectr,'  Matrix=',kk,'  Drift=',
